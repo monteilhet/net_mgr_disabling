@@ -28,3 +28,40 @@ Check Which Network Interfaces are Managed by Network Manager:
     sudo systemctl stop NetworkManager
     sudo systemctl disable NetworkManager
 ```
+
+# Set network interface
+
+## debian/ubuntu
+
+edit /etc/network/interface
+
+```
+    # add nic interface dynamically
+    iface eth0 inet dhcp
+```
+
+sudo service networking restart (not required)
+
+## fedora
+
+edit /etc/sysconfig/network-scripts/ifcfg-enps03
+
+```
+    # add nic interface dynamically
+DEVICE=enps03
+TYPE=Ethernet
+BOOTPROTO=dhcp
+ONBOOT=yes
+USERCTL=yes
+```
+
+then enable network service
+
+```bash
+  systemctl enable netwok.service
+  systemctl start network.service
+```
+
+
+
+
